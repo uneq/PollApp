@@ -208,7 +208,7 @@ export function PollUI() {
 
             {
                 finished &&
-                <h1>Jesus liebt dich!</h1>
+                <h1>Danke für deine Teilnahme! Du kannst dieses Fenster schließen.</h1>
             }
         </div >
     );
