@@ -1,0 +1,37 @@
+@import './Mixin';
+@import './Properties';
+@import './Text';
+@import './UI';
+@import './Banner';
+@import './Login';
+@import './PollUI';
+
+html{
+    height: 100%;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: $pageBackground;
+}
+
+.BackgroundPicture{
+    padding: 0;
+    margin: 0em;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../Content/backgroundPeople.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.Container{
+    @include GlassBackground;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    padding: 1em;
+    
+}

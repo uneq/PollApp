@@ -1,0 +1,122 @@
+@import './Mixin';
+
+input[type=text] {
+
+    width: 50%;
+    margin: 0.5em;
+
+    @include GlassBackground;
+
+    font-size: 2em;
+    padding: 0.5em;
+    text-align: center;
+
+    outline: none;
+
+    border: 3px solid transparent;
+
+    &:focus {
+        border: 3px solid gray;
+    }
+
+    &:hover {
+        border: 3px solid gray;
+    }
+
+    &:not(:placeholder-shown) {
+        border: 3px solid gray;
+    }
+
+    @media only screen and (max-width: 720px) {
+        font-size: 1em;
+    }
+
+}
+
+input[type=number] {
+
+    width: 50%;
+    margin: 0.5em;
+
+    @include GlassBackground;
+
+    font-size: 2em;
+    padding: 0.5em;
+    text-align: center;
+
+    outline: none;
+
+    border: 3px solid transparent;
+
+    &:focus {
+        border: 3px solid gray;
+    }
+
+    &:hover {
+        border: 3px solid gray;
+    }
+
+    &:not(:placeholder-shown) {
+        border: 3px solid gray;
+    }
+
+    @media only screen and (max-width: 720px) {
+        font-size: 1em;
+    }
+
+}
+
+
+button {
+    @include GlassBackground;
+    font-size: 2em;
+    padding: 0.5em;
+    color: $linkTextColor;
+
+    border: 3px solid $linkTextColor;
+
+    &:disabled {
+        color: gray;
+        border: 3px solid transparent;
+    }
+
+    @media only screen and (max-width: 720px) {
+        font-size: 1em;
+    }
+}
+
+.btnPressed{
+    color: $accentColor;
+    border: 3px solid $accentColor;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.ListHorizontal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    h2 {
+        width: 10%;
+        text-align: center;
+        margin-left: 1em;
+        margin-right: 1em;
+        padding: 1em;
+        @include GlassBackground();
+    }
+
+
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0.25em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    background-color: $linkTextColor;
+}

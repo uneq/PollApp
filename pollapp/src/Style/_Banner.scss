@@ -1,0 +1,21 @@
+@import './Mixin';
+
+.Banner{
+    @include GlassBackground();
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    padding: 1em;
+    display: inline-flex;
+    justify-content: center;
+
+    img{
+        width: 20%;
+    }
+
+    h1{
+        margin: auto;
+    }
+
+}

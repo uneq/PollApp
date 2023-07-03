@@ -1,0 +1,47 @@
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+h1 {
+    font-size: 2.25em;
+}
+
+h2{
+    font-size: 1.75em;
+}
+
+@media only screen and (max-width: 1150px) {
+
+    h1 {
+        font-size: 1.25em;
+    }
+
+    h2{
+        font-size: 1em;
+    }
+
+}
+
+@media only screen and (max-width: 720px) {
+
+    h1 {
+        font-size: 1em;
+        text-align: center;
+    }
+
+    h2{
+        font-size: 1em;
+    }
+
+}
+
+a {
+    font-size: 3em;
+    text-decoration: none;
+    color: $linkTextColor;
+    margin: 0.5em;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
