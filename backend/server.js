@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const backend = express();
 
-backend.use(cors());
+//backend.use(cors());
 backend.use(express.json());
 
 const database = mysql.createConnection({
