@@ -31,7 +31,7 @@ export function CodesView(props) {
 
             case '13': Class13.push(<h2 key={i} >{props.Codes[i].Code}</h2>); break;
 
-            default: console.log("Invalid Code Prefix");
+            default: return;
 
         }
 

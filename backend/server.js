@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const backend = express();
@@ -15,7 +16,14 @@ const database = mysql.createConnection({
     database: process.env.MYSQL_DB
 })
 
-backend.get('/codes', (req, res) => {
+backend.use(express.static('build'));
+
+backend.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+
+backend.get('api/codes', (req, res) => {
     const sql = "SELECT * FROM codes"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -24,7 +32,7 @@ backend.get('/codes', (req, res) => {
 
 });
 
-backend.put('/codes', (req, res) => {
+backend.put('api/codes', (req, res) => {
     const sql = `UPDATE codes SET Active = '0' WHERE Code = '${req.headers.code}'`;
     database.query(sql, (err) => {
         if (err) return err.json(err);
@@ -34,7 +42,7 @@ backend.put('/codes', (req, res) => {
 
 });
 
-backend.post('/codes', (req, res) => {
+backend.post('api/codes', (req, res) => {
     for (let i = 0; i < req.body.codes.length; i++) {
         const sql = `INSERT INTO codes (Code, Active) VALUES('${req.body.codes[i]}','1')`;
         database.query(sql, (err) => {
@@ -44,7 +52,7 @@ backend.post('/codes', (req, res) => {
     return res.status(200).json();
 });
 
-backend.get('/isactive', (req, res) => {
+backend.get('api/isactive', (req, res) => {
     const sql = `SELECT Active, Admin FROM codes WHERE Code = '${req.headers.code}'`;
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -52,7 +60,7 @@ backend.get('/isactive', (req, res) => {
     });
 });
 
-backend.get('/boolean', (req, res) => {
+backend.get('api/boolean', (req, res) => {
     const sql = "SELECT * FROM question_boolean"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -60,7 +68,7 @@ backend.get('/boolean', (req, res) => {
     });
 });
 
-backend.post('/writevalues', (req, res) => {
+backend.post('api/writevalues', (req, res) => {
     const sql = `INSERT INTO answer_${req.body.table} Values (NULL, (SELECT Code_ID FROM codes WHERE Code = '${req.body.code}'), '${req.body.questionID}', '${req.body.value}')`;
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -68,7 +76,7 @@ backend.post('/writevalues', (req, res) => {
     });
 });
 
-backend.get('/getvalues', (req, res) => {
+backend.get('api/getvalues', (req, res) => {
     const sql = `SELECT Value FROM answer_${req.headers.table} WHERE ${req.headers.table}Question_ID = '${req.headers.id}'`;
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -76,7 +84,7 @@ backend.get('/getvalues', (req, res) => {
     });
 });
 
-backend.get('/scale', (req, res) => {
+backend.get('api/scale', (req, res) => {
     const sql = "SELECT * FROM question_scale"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -84,7 +92,7 @@ backend.get('/scale', (req, res) => {
     });
 });
 
-backend.get('/dilemma', (req, res) => {
+backend.get('api/dilemma', (req, res) => {
     const sql = "SELECT * FROM question_dilemma"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -92,7 +100,7 @@ backend.get('/dilemma', (req, res) => {
     });
 });
 
-backend.get('/text', (req, res) => {
+backend.get('api/text', (req, res) => {
     const sql = "SELECT * FROM question_text"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -100,7 +108,7 @@ backend.get('/text', (req, res) => {
     });
 });
 
-backend.get('/definition', (req, res) => {
+backend.get('api/definition', (req, res) => {
     const sql = `SELECT Caption, Definition FROM definition WHERE Definition_ID = '${req.headers.id}'`;
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
