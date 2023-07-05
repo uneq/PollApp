@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../Style/main.css';
-
 
 export function CodesView(props) {
 

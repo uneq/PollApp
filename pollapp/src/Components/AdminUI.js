@@ -21,7 +21,7 @@ export function AdminUI() {
     }, [classSelected]);
 
     async function fetchData() {
-        const response = await fetch(process.env.REACT_APP_BACKEND_URL + "codes");
+        const response = await fetch(window.location.origin + '/api/codes');
         const data = await response.json();
         setCodes(data);
     }
@@ -57,7 +57,7 @@ export function AdminUI() {
 
         const newCodes = GenerateCodeSet(classArray[classSelected], codes, 4, amountNewCodes);
 
-        const response = await fetch(process.env.REACT_APP_BACKEND_URL + "codes", {
+        const response = await fetch(window.location.origin + '/api/codes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

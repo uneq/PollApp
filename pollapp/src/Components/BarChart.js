@@ -6,8 +6,6 @@ export function BarChart(props) {
 
     const labels = ["Yes","No"];
 
-    
-
     const data = {
         labels: labels,
         datasets: [

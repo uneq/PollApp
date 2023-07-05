@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const backend = express();
 
-//backend.use(cors());
+backend.use(cors());
 backend.use(express.json());
 
 const database = mysql.createConnection({
@@ -18,12 +18,7 @@ const database = mysql.createConnection({
 
 backend.use(express.static('build'));
 
-backend.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-
-backend.get('api/codes', (req, res) => {
+backend.get('/api/codes', (req, res) => {
     const sql = "SELECT * FROM codes"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -32,7 +27,7 @@ backend.get('api/codes', (req, res) => {
 
 });
 
-backend.put('api/codes', (req, res) => {
+backend.put('/api/codes', (req, res) => {
     const sql = `UPDATE codes SET Active = '0' WHERE Code = '${req.headers.code}'`;
     database.query(sql, (err) => {
         if (err) return err.json(err);
@@ -42,7 +37,7 @@ backend.put('api/codes', (req, res) => {
 
 });
 
-backend.post('api/codes', (req, res) => {
+backend.post('/api/codes', (req, res) => {
     for (let i = 0; i < req.body.codes.length; i++) {
         const sql = `INSERT INTO codes (Code, Active) VALUES('${req.body.codes[i]}','1')`;
         database.query(sql, (err) => {
@@ -52,7 +47,7 @@ backend.post('api/codes', (req, res) => {
     return res.status(200).json();
 });
 
-backend.get('api/isactive', (req, res) => {
+backend.get('/api/isactive', (req, res) => {
     const sql = `SELECT Active, Admin FROM codes WHERE Code = '${req.headers.code}'`;
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -60,7 +55,7 @@ backend.get('api/isactive', (req, res) => {
     });
 });
 
-backend.get('api/boolean', (req, res) => {
+backend.get('/api/boolean', (req, res) => {
     const sql = "SELECT * FROM question_boolean"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -68,7 +63,7 @@ backend.get('api/boolean', (req, res) => {
     });
 });
 
-backend.post('api/writevalues', (req, res) => {
+backend.post('/api/writevalues', (req, res) => {
     const sql = `INSERT INTO answer_${req.body.table} Values (NULL, (SELECT Code_ID FROM codes WHERE Code = '${req.body.code}'), '${req.body.questionID}', '${req.body.value}')`;
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -76,7 +71,7 @@ backend.post('api/writevalues', (req, res) => {
     });
 });
 
-backend.get('api/getvalues', (req, res) => {
+backend.get('/api/getvalues', (req, res) => {
     const sql = `SELECT Value FROM answer_${req.headers.table} WHERE ${req.headers.table}Question_ID = '${req.headers.id}'`;
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -84,7 +79,7 @@ backend.get('api/getvalues', (req, res) => {
     });
 });
 
-backend.get('api/scale', (req, res) => {
+backend.get('/api/scale', (req, res) => {
     const sql = "SELECT * FROM question_scale"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -92,7 +87,7 @@ backend.get('api/scale', (req, res) => {
     });
 });
 
-backend.get('api/dilemma', (req, res) => {
+backend.get('/api/dilemma', (req, res) => {
     const sql = "SELECT * FROM question_dilemma"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -100,7 +95,7 @@ backend.get('api/dilemma', (req, res) => {
     });
 });
 
-backend.get('api/text', (req, res) => {
+backend.get('/api/text', (req, res) => {
     const sql = "SELECT * FROM question_text"
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
@@ -108,15 +103,18 @@ backend.get('api/text', (req, res) => {
     });
 });
 
-backend.get('api/definition', (req, res) => {
+backend.get('/api/definition', (req, res) => {
     const sql = `SELECT Caption, Definition FROM definition WHERE Definition_ID = '${req.headers.id}'`;
     database.query(sql, (err, data) => {
         if (err) return err.json(err);
         return res.json(data);
     });
-})
+});
 
+backend.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
-backend.listen(5000, () => {
+backend.listen(3000, () => {
 
 });

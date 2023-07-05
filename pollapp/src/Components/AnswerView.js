@@ -19,14 +19,14 @@ export function AnswerView() {
             let answerCollection = []
 
             for (let i = 0; i < ApiEndpoint.length; i++) {
-                const responseQuestion = await fetch(process.env.REACT_APP_BACKEND_URL + ApiEndpoint[i])
+                const responseQuestion = await fetch(window.location.origin + '/api/' + ApiEndpoint[i])
                 const dataQuestion = await responseQuestion.json(responseQuestion);
                 questionCollection.push(dataQuestion);
             }
 
             for (let i = 0; i < questionCollection.length; i++) {
                 for (let j = 1; j < questionCollection[i].length + 1; j++) {
-                    const responseAnswer = await fetch(process.env.REACT_APP_BACKEND_URL + "getvalues", {
+                    const responseAnswer = await fetch(window.location.origin + '/api/' + "getvalues", {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json',

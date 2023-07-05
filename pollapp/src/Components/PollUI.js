@@ -23,7 +23,7 @@ export function PollUI() {
             let questionCollection = [];
 
             for (let i = 0; i < ApiEndpoint.length; i++) {
-                const response = await fetch(process.env.REACT_APP_BACKEND_URL + ApiEndpoint[i])
+                const response = await fetch(window.location.origin + '/api/' + ApiEndpoint[i])
                 const data = await response.json(response);
                 questionCollection.push(data);
             }
@@ -75,7 +75,7 @@ export function PollUI() {
 
         if (question[questionType][questionIndex].Definition_ID === undefined) return;
 
-        const response = await fetch(process.env.REACT_APP_BACKEND_URL + "definition", {
+        const response = await fetch(window.location.origin + '/api/definition', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ export function PollUI() {
     async function writeAnswer(value) {
         const key = Object.keys(question[questionType][questionIndex])[0];
 
-        const response = await fetch(process.env.REACT_APP_BACKEND_URL + "writevalues", {
+        const response = await fetch(window.location.origin + '/api/writevalues', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

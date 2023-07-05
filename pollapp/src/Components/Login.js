@@ -9,7 +9,7 @@ export function Login(props) {
     const [showComponent, setShowComponent] = useState(false);
 
     async function fetchData() {
-        const response = await fetch(process.env.REACT_APP_BACKEND_URL + "isactive", {
+        const response = await fetch(window.location.origin + '/api/isactive', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export function Login(props) {
     }
 
     async function deactivateCode(){
-        const response = await fetch(process.env.REACT_APP_BACKEND_URL + "codes", {
+        const response = await fetch(window.location.origin + '/api/codes', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
