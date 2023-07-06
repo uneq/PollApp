@@ -12,7 +12,7 @@ export function CodesView(props) {
     const Class12 = [];
     const Class13 = [];
 
-    if (props.Codes.length < 1) return;
+    if(props.Codes === undefined) return;
 
     for (let i = 0; i < props.Codes.length; i++) {
 
@@ -106,6 +106,7 @@ export function CodesView(props) {
                     </>
                 }
             </div>
+
         </div>
 
     );

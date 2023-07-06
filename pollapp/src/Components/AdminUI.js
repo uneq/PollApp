@@ -1,8 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Login } from '../Components/Login';
-import { Banner } from '../Components/Banner';
+import { useState, useEffect } from 'react';
 import { GenerateCodeSet } from '../HelperFunctions/CodeGenerator';
-import { CodesView } from '../Components/CodesView';
+import { CodesView } from './CodesView';
 import { AnswerView } from './AnswerView';
 
 export function AdminUI() {
@@ -71,7 +69,6 @@ export function AdminUI() {
     }
 
     return (
-
         <>
             <div className='Container'>
                 <h1>Codes Gesamt: {codes.length - 1}</h1>
@@ -98,7 +95,7 @@ export function AdminUI() {
                 <button disabled={codeGeneratorDisable} onClick={GenerateCode}>Generieren</button>
             </div>
 
-            <CodesView Codes={codes} Class={classArray[classSelected]} ></CodesView>
+            <CodesView Codes={codes[0]} Class={classArray[classSelected]} ></CodesView>
 
             <AnswerView></AnswerView>
 

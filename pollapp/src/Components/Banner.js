@@ -1,5 +1,5 @@
 import '../Style/main.css';
-import Logo from '../Content/Logo_Ulrich-von-Hutten-Gymnasium_Schlüchtern.png'
+import Logo from '../Content/Logo_Ulrich-von-Hutten-Gymnasium.png'
 
 export function Banner(props) {
     return (
