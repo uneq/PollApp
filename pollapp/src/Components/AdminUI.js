@@ -68,6 +68,12 @@ export function AdminUI() {
         if (response.status === 200) fetchData();
     }
 
+    function getCodeStringArray(){
+        let codesStringArray = [];
+        for(let i = 1; i < codes.length; i++) codesStringArray.push(codes[i].Code);
+        return codesStringArray;
+    }
+
     return (
         <>
             <div className='Container'>
@@ -95,7 +101,7 @@ export function AdminUI() {
                 <button disabled={codeGeneratorDisable} onClick={GenerateCode}>Generieren</button>
             </div>
 
-            <CodesView Codes={codes[0]} Class={classArray[classSelected]} ></CodesView>
+            <CodesView Codes={getCodeStringArray()} Class={classArray[classSelected]} ></CodesView>
 
             <AnswerView></AnswerView>
 

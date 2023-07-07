@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "./static/css/main.9f2bfdde.css",
-    "main.js": "./static/js/main.56e63ec1.js",
+    "main.js": "./static/js/main.273299e6.js",
     "static/media/backgroundPeople.jpeg": "./static/media/backgroundPeople.bc86bb29be379893fb17.jpeg",
     "static/media/Logo_Ulrich-von-Hutten-Gymnasium.png": "./static/media/Logo_Ulrich-von-Hutten-Gymnasium.2f25abc3dd8f7bbf9c9a.png",
     "index.html": "./index.html",
     "main.9f2bfdde.css.map": "./static/css/main.9f2bfdde.css.map",
-    "main.56e63ec1.js.map": "./static/js/main.56e63ec1.js.map"
+    "main.273299e6.js.map": "./static/js/main.273299e6.js.map"
   },
   "entrypoints": [
     "static/css/main.9f2bfdde.css",
-    "static/js/main.56e63ec1.js"
+    "static/js/main.273299e6.js"
   ]
 }

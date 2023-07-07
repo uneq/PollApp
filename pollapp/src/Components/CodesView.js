@@ -3,6 +3,8 @@ import '../Style/main.css';
 
 export function CodesView(props) {
 
+    console.log(props.Codes);
+
     const [enableCodeView, setCodeView] = useState(true);
 
     const Class08 = [];
@@ -12,23 +14,21 @@ export function CodesView(props) {
     const Class12 = [];
     const Class13 = [];
 
-    if(props.Codes === undefined) return;
-
     for (let i = 0; i < props.Codes.length; i++) {
 
-        switch (props.Codes[i].Code.substring(0, 2)) {
+        switch (props.Codes[i].substring(0, 2)) {
 
-            case '08': Class08.push(<h2 key={i} >{props.Codes[i].Code}</h2>); break;
+            case '08': Class08.push(<h2 key={i} >{props.Codes[i]}</h2>); break;
 
-            case '09': Class09.push(<h2 key={i} >{props.Codes[i].Code}</h2>); break;
+            case '09': Class09.push(<h2 key={i} >{props.Codes[i]}</h2>); break;
 
-            case '10': Class10.push(<h2 key={i} >{props.Codes[i].Code}</h2>); break;
+            case '10': Class10.push(<h2 key={i} >{props.Codes[i]}</h2>); break;
 
-            case '11': Class11.push(<h2 key={i} >{props.Codes[i].Code}</h2>); break;
+            case '11': Class11.push(<h2 key={i} >{props.Codes[i]}</h2>); break;
 
-            case '12': Class12.push(<h2 key={i} >{props.Codes[i].Code}</h2>); break;
+            case '12': Class12.push(<h2 key={i} >{props.Codes[i]}</h2>); break;
 
-            case '13': Class13.push(<h2 key={i} >{props.Codes[i].Code}</h2>); break;
+            case '13': Class13.push(<h2 key={i} >{props.Codes[i]}</h2>); break;
 
             default: return;
 
