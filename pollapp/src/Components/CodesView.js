@@ -3,8 +3,6 @@ import '../Style/main.css';
 
 export function CodesView(props) {
 
-    console.log(props.Codes);
-
     const [enableCodeView, setCodeView] = useState(true);
 
     const Class08 = [];
